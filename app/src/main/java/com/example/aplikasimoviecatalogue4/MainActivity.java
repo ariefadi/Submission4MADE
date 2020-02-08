@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         // fragment initialize
         fm.beginTransaction().add(R.id.container, favoriteFragment, "3").hide(favoriteFragment).commit();
         fm.beginTransaction().add(R.id.container, tvShowFragment, "2").hide(tvShowFragment).commit();
-        fm.beginTransaction().add(R.id.container,moviesFragment, "1").commit();
+        fm.beginTransaction().add(R.id.container,moviesFragment, "1").hide(moviesFragment).commit();
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bn_main);
         navigation.setOnNavigationItemSelectedListener(this);
@@ -51,7 +51,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         if (item.getItemId() == R.id.action_change_settings) {
             Intent mIntent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
             startActivity(mIntent);
-
         }
         return super.onOptionsItemSelected(item);
     }
