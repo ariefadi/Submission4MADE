@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Aplikasi Movie Catalogue 4</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="tab_movies">Film</string>
+    <string name="tab_tv_show">Siaran TV</string>
+    <string name="tab_favorite">Disukai</string>
+    <string name="tab_favorite_movie">Film Disukai</string>
+    <string name="tab_favorite_tv">Acara TV Disukai</string>
+    <!-- Localization : Film ID-->
+    <string name="judul_film">Judul Film</string>
+    <string name="deskripsi_film">Deskripsi Film</string>
+    <string name="tanggal_release">Tanggal Rilis</string>
+    <string name="bahasa">Bahasa</string>
+    <string name="rating">Rating Film</string>
+    <string name="kepopuleran">Kepopuleran</string>
+    <string name="jumlah_tayang">Jumlah Tayang</string>
+
+    <!-- Localization : TV Show ID-->
+    <string name="nama_tv_show">Nama Tv Show</string>
+    <string name="deskripsi_tv_show">Deskripsi Tv Show</string>
+    <string name="tanggal_tayang">Tanggal Tayang</string>
+    <string name="bahasa_tv">Bahasa</string>
+    <string name="rating_tv">Rating Tv Show</string>
+    <string name="kepopuleran_tv">Kepopuleran Tv Show</string>
+    <string name="jumlah_tayang_tv">Jumlah Tayang</string>
+    <string name="pilih_pengaturan_bahasa">Pilih Pengaturan Bahasa</string>
+    <string name="film_disukai">Film Disukai</string>
+    <string name="tv_disukai">Tv Disukai</string>
+    <string name="btn_detail">Rincian</string>
+    <string name="btn_delete_favorite">Hapus Favorit</string>
+</resources>

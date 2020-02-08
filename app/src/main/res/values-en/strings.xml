@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Movie Catalogue 4 Application</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="tab_movies">Movies</string>
+    <string name="tab_tv_show">TV Show</string>
+    <string name="tab_favorite">Favorite</string>
+    <string name="tab_favorite_movie">Favorite Film</string>
+    <string name="tab_favorite_tv">Favorite TV Show</string>
+    <!-- Localization : Film ID-->
+    <string name="judul_film">Movie Title</string>
+    <string name="deskripsi_film">Movie Overview</string>
+    <string name="tanggal_release">Release Date</string>
+    <string name="bahasa">Language</string>
+    <string name="rating">Vote Average</string>
+    <string name="kepopuleran">Popularity</string>
+    <string name="jumlah_tayang">Vote Count</string>
+    <!-- Localization : TV Show ID-->
+    <string name="nama_tv_show">Tv Show Name</string>
+    <string name="deskripsi_tv_show">Tv Show Overview</string>
+    <string name="tanggal_tayang">First Air Date</string>
+    <string name="bahasa_tv">Language</string>
+    <string name="rating_tv">Vote Average</string>
+    <string name="kepopuleran_tv">Popularity</string>
+    <string name="jumlah_tayang_tv">Vote Count</string>
+    <string name="pilih_pengaturan_bahasa">Change Language Settings</string>
+    <string name="film_disukai">Favorite Film</string>
+    <string name="tv_disukai">Favorite Tv</string>
+    <string name="btn_detail">Detail</string>
+    <string name="btn_delete_favorite">Delete Favorite</string>
+</resources>

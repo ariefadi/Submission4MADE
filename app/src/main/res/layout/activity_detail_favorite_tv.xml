@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        tools:context=".DetailFavoriteTvActivity">
+
+        <ImageView
+            android:id="@+id/img_tv_show"
+            android:layout_width="175dp"
+            android:layout_height="200dp"
+            tools:srcCompat="@drawable/cinema"/>
+
+        <TextView
+            android:id="@+id/tv_name_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/nama_tv_show"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/img_tv_show"
+            tools:layout_editor_absoluteX="2dp" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="290dp"
+            android:text="TV Show Title Name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name_title"
+            tools:layout_editor_absoluteX="2dp"/>
+
+        <TextView
+            android:id="@+id/tv_first_air_date_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/tanggal_tayang"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/tv_name"
+            tools:layout_editor_absoluteX="2dp" />
+
+        <TextView
+            android:id="@+id/tv_first_air_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="290dp"
+            android:text="TV Show Date Release"
+            app:layout_constraintTop_toBottomOf="@+id/tv_first_air_date_title"
+            tools:layout_editor_absoluteX="2dp"/>
+
+        <TextView
+            android:id="@+id/tv_overview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/deskripsi_tv_show"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/tv_first_air_date"
+            tools:layout_editor_absoluteX="2dp" />
+
+        <TextView
+            android:id="@+id/tv_overview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="290dp"
+            android:text="TV Show Overview Description"
+            app:layout_constraintTop_toBottomOf="@+id/tv_overview_title"
+            tools:layout_editor_absoluteX="2dp"/>
+
+        <TextView
+            android:id="@+id/tv_vote_average_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:text="@string/rating_tv"
+            app:layout_constraintLeft_toRightOf="@+id/img_tv_show"
+            tools:layout_editor_absoluteY="4dp" />
+
+        <TextView
+            android:id="@+id/tv_vote_average"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:text="Value"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/img_tv_show"
+            app:layout_constraintTop_toBottomOf="@+id/tv_vote_average_title"/>
+
+        <TextView
+            android:id="@+id/tv_vote_count_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="@string/jumlah_tayang_tv"
+            app:layout_constraintLeft_toRightOf="@+id/img_tv_show"
+            app:layout_constraintTop_toBottomOf="@id/tv_vote_average"/>
+
+        <TextView
+            android:id="@+id/tv_vote_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="4dp"
+            android:text="Value"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/img_tv_show"
+            app:layout_constraintTop_toBottomOf="@id/tv_vote_count_title"/>
+
+        <TextView
+            android:id="@+id/tv_popularity_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="@string/kepopuleran_tv"
+            app:layout_constraintLeft_toRightOf="@+id/img_tv_show"
+            app:layout_constraintTop_toBottomOf="@id/tv_vote_count"/>
+
+        <TextView
+            android:id="@+id/tv_popularity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:text="Value"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/img_tv_show"
+            app:layout_constraintTop_toBottomOf="@id/tv_popularity_title"/>
+
+        <TextView
+            android:id="@+id/tv_original_language_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="8dp"
+            android:text="@string/bahasa_tv"
+            app:layout_constraintLeft_toRightOf="@+id/img_tv_show"
+            app:layout_constraintTop_toBottomOf="@id/tv_popularity"/>
+
+        <TextView
+            android:id="@+id/tv_original_language"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="4dp"
+            android:text="Value"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/img_tv_show"
+            app:layout_constraintTop_toBottomOf="@id/tv_original_language_title"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
