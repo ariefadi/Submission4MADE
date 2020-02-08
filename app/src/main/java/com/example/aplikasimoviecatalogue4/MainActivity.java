@@ -35,8 +35,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         fm.beginTransaction().add(R.id.container, tvShowFragment, "2").hide(tvShowFragment).commit();
         fm.beginTransaction().add(R.id.container,moviesFragment, "1").hide(moviesFragment).commit();
 
+        if (savedInstanceState != null){
+            //Restore the fragment's instance
+            active = getSupportFragmentManager().getFragment(savedInstanceState, "activeFragment");
+        }
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bn_main);
         navigation.setOnNavigationItemSelectedListener(this);
+        navigation.setSelectedItemId(R.id.movies);
     }
 
 
@@ -74,5 +80,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 return true;
         }
         return false;
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // Save Fragment's Instance
+        getSupportFragmentManager().putFragment(outState, "activeFragment", active);
     }
 }

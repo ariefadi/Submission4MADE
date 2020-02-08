@@ -9,8 +9,6 @@ import com.androidnetworking.common.ANResponse;
 import com.androidnetworking.common.Priority;
 import com.example.aplikasimoviecatalogue4.BuildConfig;
 import com.example.aplikasimoviecatalogue4.Model.TvShowItems;
-import com.loopj.android.http.AsyncHttpResponseHandler;
-import com.loopj.android.http.SyncHttpClient;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -19,7 +17,6 @@ import java.util.ArrayList;
 
 import androidx.annotation.Nullable;
 import androidx.loader.content.AsyncTaskLoader;
-import cz.msebera.android.httpclient.Header;
 
 public class TvShowLoader extends AsyncTaskLoader<ArrayList<TvShowItems>> {
 
