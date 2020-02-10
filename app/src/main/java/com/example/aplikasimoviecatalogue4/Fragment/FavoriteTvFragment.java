@@ -93,7 +93,7 @@ public class FavoriteTvFragment extends Fragment implements LoadTvCallback {
             progressBar.setVisibility(View.GONE);
         } else {
             adapter.setListTvShow(new ArrayList<TvShowItems>());
-            Toast.makeText(getActivity().getApplicationContext(), "Data tidak ada saat ini !", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity().getApplicationContext(), R.string.data_kosong, Toast.LENGTH_SHORT).show();
             progressBar.setVisibility(View.GONE);
         }
     }
@@ -139,12 +139,12 @@ public class FavoriteTvFragment extends Fragment implements LoadTvCallback {
                     adapter.addItem(tvShowItems);
                     rvTvShow.smoothScrollToPosition(adapter.getItemCount() - 1);
 
-                    Toast.makeText(getActivity().getApplicationContext(), "Satu item berhasil ditambahkan ke Favorite !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(), R.string.data_berhasil_disimpan, Toast.LENGTH_SHORT).show();
                 }
             } else if (requestCode == DetailTvShowActivity.RESULT_DELETE_TV) {
                 int position = data.getIntExtra(DetailTvShowActivity.EXTRA_POSITION_TV, 0);
                 adapter.removeItem(position);
-                Toast.makeText(getActivity().getApplicationContext(), "Satu item berhasil dihapus dari Favorite !", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), R.string.data_berhasil_dihapus, Toast.LENGTH_SHORT).show();
             }
         }
     }

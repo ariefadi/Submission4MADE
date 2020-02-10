@@ -29,4 +29,10 @@
     <string name="tv_disukai">Tv Disukai</string>
     <string name="btn_detail">Rincian</string>
     <string name="btn_delete_favorite">Hapus Favorit</string>
+
+    <!-- Toast Notification  -->
+    <string name="data_kosong">Data tidak ada saat ini !</string>
+    <string name="data_berhasil_disimpan">Satu item berhasil ditambahkan ke Favorit !</string>
+    <string name="data_berhasil_dihapus">Satu item berhasil dihapus dari Favorit !</string>
+
 </resources>

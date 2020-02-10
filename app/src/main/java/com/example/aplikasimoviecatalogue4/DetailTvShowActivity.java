@@ -137,12 +137,12 @@ public class DetailTvShowActivity extends AppCompatActivity {
                     long result = queryHelper.insertTv(values);
                     if (result > 0){
                         item.setIcon(R.drawable.ic_favorite_black_24dp);
-                        Toast.makeText(DetailTvShowActivity.this, "Berhasil menambah data ke favorite !", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DetailTvShowActivity.this, R.string.data_berhasil_disimpan, Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     queryHelper.deleteTvById(tvShowItems.getId());
                     item.setIcon(R.drawable.ic_favorite_border_black_24dp);
-                    Toast.makeText(DetailTvShowActivity.this, "Berhasil menghapus data dari favorite !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailTvShowActivity.this, R.string.data_berhasil_dihapus, Toast.LENGTH_SHORT).show();
                 }
                 isFavoriteTv = !isFavoriteTv;
         }

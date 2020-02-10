@@ -29,4 +29,10 @@
     <string name="tv_disukai">Favorite Tv</string>
     <string name="btn_detail">Detail</string>
     <string name="btn_delete_favorite">Delete Favorite</string>
+
+    <!-- Toast Notification  -->
+    <string name="data_kosong">Data is not available right now !</string>
+    <string name="data_berhasil_disimpan">One item successfully added to Favorite !</string>
+    <string name="data_berhasil_dihapus">One item successfully deleted from Favorite !</string>
+
 </resources>

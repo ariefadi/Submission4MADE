@@ -135,12 +135,12 @@ public class DetailMoviesActivity extends AppCompatActivity {
                 long result = queryHelper.insert(values);
                 if (result > 0){
                     item.setIcon(R.drawable.ic_favorite_black_24dp);
-                    Toast.makeText(DetailMoviesActivity.this, "Berhasil menambah data ke favorite !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DetailMoviesActivity.this, R.string.data_berhasil_disimpan, Toast.LENGTH_SHORT).show();
                 }
             } else {
                 queryHelper.deleteById(moviesItems.getId());
                 item.setIcon(R.drawable.ic_favorite_border_black_24dp);
-                Toast.makeText(DetailMoviesActivity.this, "Berhasil menghapus data dari favorite !", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DetailMoviesActivity.this, R.string.data_berhasil_dihapus, Toast.LENGTH_SHORT).show();
             }
             isFavorite = !isFavorite;
         }

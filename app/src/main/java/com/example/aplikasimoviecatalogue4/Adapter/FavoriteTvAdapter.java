@@ -101,7 +101,7 @@ public class FavoriteTvAdapter extends RecyclerView.Adapter<FavoriteTvAdapter.Ca
             @Override
             public void onItemClicked(View view, int position) {
                 holder.queryHelper.deleteTvById(tvShowItems.getId());
-                Toast.makeText(context, "Berhasil menghapus data dari favorite !", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, R.string.data_berhasil_dihapus, Toast.LENGTH_SHORT).show();
                 removeItem(position);
             }
         }));

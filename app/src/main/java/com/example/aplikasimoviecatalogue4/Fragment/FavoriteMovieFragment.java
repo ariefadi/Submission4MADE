@@ -94,7 +94,7 @@ public class FavoriteMovieFragment extends Fragment implements LoadMoviesCallbac
             progressBar.setVisibility(View.GONE);
         } else {
             adapter.setListMovies(new ArrayList<MoviesItems>());
-            Toast.makeText(getActivity().getApplicationContext(), "Data tidak ada saat ini !", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity().getApplicationContext(), R.string.data_kosong, Toast.LENGTH_SHORT).show();
             progressBar.setVisibility(View.GONE);
         }
     }
@@ -141,12 +141,12 @@ public class FavoriteMovieFragment extends Fragment implements LoadMoviesCallbac
                     adapter.addItem(moviesItem);
                     rvMovies.smoothScrollToPosition(adapter.getItemCount() - 1);
 
-                    Toast.makeText(getActivity().getApplicationContext(), "Satu item berhasil ditambahkan ke Favorite !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(), R.string.data_berhasil_disimpan, Toast.LENGTH_SHORT).show();
                 }
             } else if (requestCode == DetailMoviesActivity.RESULT_DELETE) {
                 int position = data.getIntExtra(DetailMoviesActivity.EXTRA_POSITION, 0);
                 adapter.removeItem(position);
-                Toast.makeText(getActivity().getApplicationContext(), "Satu item berhasil dihapus dari Favorite !", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity().getApplicationContext(), R.string.data_berhasil_dihapus, Toast.LENGTH_SHORT).show();
             }
         }
     }
