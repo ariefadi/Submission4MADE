@@ -12,12 +12,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailFavoriteTvActivity"></activity>
+        <receiver android:name=".Widget.CatalogueWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/catalogue_widget_info" />
+        </receiver>
+
+        <activity android:name=".DetailFavoriteTvActivity" />
         <activity android:name=".DetailFavoriteMovieActivity" />
         <activity android:name=".DetailTvShowActivity" />
         <activity android:name=".DetailMoviesActivity" />
-        <activity android:name=".MainActivity"
-                  android:configChanges="orientation|screenSize">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

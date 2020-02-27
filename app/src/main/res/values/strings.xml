@@ -35,4 +35,9 @@
     <string name="data_berhasil_disimpan">Satu item berhasil ditambahkan ke Favorit !</string>
     <string name="data_berhasil_dihapus">Satu item berhasil dihapus dari Favorit !</string>
 
+    <string name="search"></string>
+    <string name="search_hint">Masukkan Nama Film / TV</string>
+    <string name="widget_text">DAFTAR FILM</string>
+    <string name="add_widget">Tambah widget</string>
+    <string name="empty_text">Tidak Ada Data</string>
 </resources>

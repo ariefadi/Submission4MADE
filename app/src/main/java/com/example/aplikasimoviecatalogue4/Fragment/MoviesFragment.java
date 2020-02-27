@@ -1,12 +1,20 @@
 package com.example.aplikasimoviecatalogue4.Fragment;
 
+import android.app.SearchManager;
+import android.content.Context;
+import android.text.TextUtils;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import androidx.appcompat.widget.SearchView;
 
 import com.example.aplikasimoviecatalogue4.Adapter.CardViewMoviesAdapter;
+import com.example.aplikasimoviecatalogue4.Adapter.SearchMovieAdapter;
 import com.example.aplikasimoviecatalogue4.Loader.MoviesLoader;
 import com.example.aplikasimoviecatalogue4.Model.MoviesData;
 import com.example.aplikasimoviecatalogue4.Model.MoviesItems;
@@ -32,8 +40,15 @@ public class MoviesFragment extends Fragment implements LoaderManager.LoaderCall
     ArrayList<MoviesItems> searchList = new ArrayList<>();
     CardViewMoviesAdapter adapter;
     ProgressBar loading;
-    private final String STATE_LIST = "state_list";
+    ArrayList mData;
+    SearchMovieAdapter adaptersearchMovieAdapter;
+    String dataSearch;
 
+    private SearchView searchView = null;
+    private SearchView.OnQueryTextListener queryTextListener;
+    private SearchView.OnCloseListener closeListener;
+
+    private final String STATE_LIST = "state_list";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,7 +67,18 @@ public class MoviesFragment extends Fragment implements LoaderManager.LoaderCall
         adapter.setListMovies(searchList);
         adapter.notifyDataSetChanged();
 
+        adaptersearchMovieAdapter = new SearchMovieAdapter(getActivity(), mData);
+        rvCategory.setAdapter(adaptersearchMovieAdapter);
+        adaptersearchMovieAdapter.setListMovies(searchList);
+        adaptersearchMovieAdapter.notifyDataSetChanged();
+
         loading = (ProgressBar)view.findViewById(R.id.progressBar);
+
+        setHasOptionsMenu(true);
+
+        String movie = dataSearch;
+        Bundle bundle = new Bundle();
+        bundle.putString(STATE_LIST, movie);
 
         searchList = new ArrayList<>();
         searchList.addAll(MoviesData.getListData());
@@ -66,7 +92,62 @@ public class MoviesFragment extends Fragment implements LoaderManager.LoaderCall
             }
         }
 
-        getLoaderManager().initLoader(0,null,this);
+        getLoaderManager().initLoader(0, bundle,this);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.setting_menu, menu);
+        MenuItem searchItem = menu.findItem(R.id.search);
+        SearchManager searchManager = (SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE);
+
+        if (searchItem != null) {
+            searchView = (SearchView) searchItem.getActionView();
+        }
+        if (searchView != null) {
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
+
+            queryTextListener = new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextChange(String newText) {
+
+                    return false;
+                }
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+
+                    dataSearch = !TextUtils.isEmpty(query) ? query : null;
+                    String movie = dataSearch;
+                    Bundle bundle = new Bundle();
+                    bundle.putString(STATE_LIST, movie);
+                    getLoaderManager().restartLoader(0, bundle, MoviesFragment.this);
+                    return false;
+                }
+            };
+            searchView.setOnQueryTextListener(queryTextListener);
+        } else {
+            closeListener = new SearchView.OnCloseListener() {
+                @Override
+                public boolean onClose() {
+                    searchView.onActionViewCollapsed();
+                    return true;
+                }
+            };
+            searchView.setOnCloseListener(closeListener);
+        }
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.search:
+                return false;
+            default:
+                break;
+        }
+        searchView.setOnQueryTextListener(queryTextListener);
+        return super.onOptionsItemSelected(item);
     }
 
     @NonNull
@@ -74,7 +155,11 @@ public class MoviesFragment extends Fragment implements LoaderManager.LoaderCall
     public Loader<ArrayList<MoviesItems>> onCreateLoader(int id, @Nullable Bundle args) {
         loading.setVisibility(View.VISIBLE);
         rvCategory.setVisibility(View.GONE);
-        return new MoviesLoader(getActivity());
+        String kumpulanFilm = "";
+        if (args != null){
+            kumpulanFilm = args.getString(STATE_LIST);
+        }
+        return new MoviesLoader(getActivity(), kumpulanFilm);
     }
 
     @Override

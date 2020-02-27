@@ -8,12 +8,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.aplikasimoviecatalogue4.CustomOnItemClickListener;
-import com.example.aplikasimoviecatalogue4.Database.QueryHelper;
-import com.example.aplikasimoviecatalogue4.DetailFavoriteMovieActivity;
+import com.example.aplikasimoviecatalogue4.DetailMoviesActivity;
 import com.example.aplikasimoviecatalogue4.Model.MoviesItems;
 import com.example.aplikasimoviecatalogue4.R;
 
@@ -22,13 +20,18 @@ import java.util.ArrayList;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class FavoriteMovieAdapter extends RecyclerView.Adapter<FavoriteMovieAdapter.CardViewViewHolder> {
 
-    private ArrayList<MoviesItems> listMovies = new ArrayList<>();
+public class SearchMovieAdapter extends RecyclerView.Adapter<SearchMovieAdapter.CardViewViewHolder> {
+
+
+    private ArrayList<MoviesItems> listMovies;
+    LayoutInflater mInflater;
     private Context context;
 
-    public FavoriteMovieAdapter(Context context){
+    public SearchMovieAdapter(Context context, ArrayList<MoviesItems> mData){
+        this.listMovies = mData;
         this.context = context;
+        mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     public ArrayList<MoviesItems>getListMovies(){
@@ -36,35 +39,20 @@ public class FavoriteMovieAdapter extends RecyclerView.Adapter<FavoriteMovieAdap
     }
 
     public void setListMovies(ArrayList<MoviesItems> listMovies){
-
-        if (listMovies.size() > 0) {
-            this.listMovies.clear();
-        }
-        this.listMovies.addAll(listMovies);
+        this.listMovies = listMovies;
         notifyDataSetChanged();
-    }
-
-    public void addItem(MoviesItems moviesItems) {
-        this.listMovies.add(moviesItems);
-        notifyItemInserted(listMovies.size() - 1);
-    }
-    public void removeItem(int position) {
-        this.listMovies.remove(position);
-        notifyItemRemoved(position);
-        notifyItemRangeChanged(position,listMovies.size());
     }
 
     @NonNull
     @Override
-    public FavoriteMovieAdapter.CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.favorite_movie_item, parent, false);
-        FavoriteMovieAdapter.CardViewViewHolder viewHolder = new FavoriteMovieAdapter.CardViewViewHolder(view);
+    public SearchMovieAdapter.CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_cardview_movies_adapter, parent, false);
+        CardViewViewHolder viewHolder = new CardViewViewHolder(view);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final FavoriteMovieAdapter.CardViewViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
         final MoviesItems moviesItems = getListMovies().get(position);
         Glide.with(context)
                 .load("https://image.tmdb.org/t/p/w300/"+moviesItems.getPoster_path())
@@ -73,6 +61,7 @@ public class FavoriteMovieAdapter extends RecyclerView.Adapter<FavoriteMovieAdap
         holder.tvTitle.setText(moviesItems.getTitle());
         holder.tvOverview.setText(moviesItems.getOverview());
         holder.tvReleaseDate.setText(moviesItems.getRelease_date());
+
         holder.btnDetail.setOnClickListener(new CustomOnItemClickListener(position, new CustomOnItemClickListener.OnItemClickCallback() {
             @Override
             public void onItemClicked(View view, int position) {
@@ -90,18 +79,10 @@ public class FavoriteMovieAdapter extends RecyclerView.Adapter<FavoriteMovieAdap
                 movies.setOriginal_title(getListMovies().get(position).getOriginal_title());
                 movies.setPoster_path(getListMovies().get(position).getPoster_path());
 
-                Intent intent = new Intent(context, DetailFavoriteMovieActivity.class);
-                intent.putExtra(DetailFavoriteMovieActivity.EXTRA_MOVIES, movies);
+                Intent intent = new Intent(context, DetailMoviesActivity.class);
+                intent.putExtra(DetailMoviesActivity.EXTRA_MOVIES, movies);
                 context.startActivity(intent);
 
-            }
-        }));
-        holder.btnDelete.setOnClickListener(new CustomOnItemClickListener(position, new CustomOnItemClickListener.OnItemClickCallback() {
-            @Override
-            public void onItemClicked(View view, int position) {
-                holder.queryHelper.deleteById(moviesItems.getId());
-                Toast.makeText(context, R.string.data_berhasil_dihapus, Toast.LENGTH_SHORT).show();
-                removeItem(position);
             }
         }));
     }
@@ -115,8 +96,7 @@ public class FavoriteMovieAdapter extends RecyclerView.Adapter<FavoriteMovieAdap
     class CardViewViewHolder extends RecyclerView.ViewHolder{
         ImageView imgMovies;
         TextView tvTitle, tvOverview, tvReleaseDate;
-        Button btnDetail,btnDelete;
-        QueryHelper queryHelper;
+        Button btnDetail;
 
         CardViewViewHolder(View itemView){
             super(itemView);
@@ -125,9 +105,7 @@ public class FavoriteMovieAdapter extends RecyclerView.Adapter<FavoriteMovieAdap
             tvOverview = (TextView)itemView.findViewById(R.id.tv_overview);
             tvReleaseDate = (TextView)itemView.findViewById(R.id.tv_release_date);
             btnDetail = (Button)itemView.findViewById(R.id.btn_set_detail);
-            btnDelete = (Button)itemView.findViewById(R.id.btn_set_hapus);
-            queryHelper = QueryHelper.getInstance(context);
-            queryHelper.open();
+
         }
     }
 }

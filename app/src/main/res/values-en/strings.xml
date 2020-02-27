@@ -35,4 +35,9 @@
     <string name="data_berhasil_disimpan">One item successfully added to Favorite !</string>
     <string name="data_berhasil_dihapus">One item successfully deleted from Favorite !</string>
 
+    <string name="search"></string>
+    <string name="search_hint">Input Movie Name / TV</string>
+    <string name="widget_text">CATALOGUE MOVIES</string>
+    <string name="add_widget">Add widget</string>
+    <string name="empty_text">NO DATA</string>
 </resources>

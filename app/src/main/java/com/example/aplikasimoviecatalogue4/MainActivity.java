@@ -3,7 +3,6 @@ package com.example.aplikasimoviecatalogue4;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.aplikasimoviecatalogue4.Fragment.FavoriteFragment;
@@ -23,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     final Fragment favoriteFragment = new FavoriteFragment();
     final FragmentManager fm = getSupportFragmentManager();
     Fragment active = moviesFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +46,29 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.setting_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        getMenuInflater().inflate(R.menu.setting_menu, menu);
+//        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+//        if (searchManager != null) {
+//            SearchView searchView = (SearchView) (menu.findItem(R.id.search)).getActionView();
+//            searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+//            searchView.setQueryHint(getResources().getString(R.string.search_hint));
+//            searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//                @Override
+//                public boolean onQueryTextSubmit(String query) {
+//                    return true;
+//                }
+//                @Override
+//                public boolean onQueryTextChange(String newText) {
+//
+//                    return false;
+//                }
+//            });
+//        }
+//        return true;
+//    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

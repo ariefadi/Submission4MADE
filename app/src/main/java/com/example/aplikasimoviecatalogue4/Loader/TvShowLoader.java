@@ -23,9 +23,13 @@ public class TvShowLoader extends AsyncTaskLoader<ArrayList<TvShowItems>> {
     private ArrayList<TvShowItems> mData;
     private boolean mHasResult = false;
 
-    public TvShowLoader(final Context context){
+    private String mKumpulanData;
+
+    public TvShowLoader(final Context context, String kumpulanData){
         super(context);
         onContentChanged();
+
+        this.mKumpulanData = kumpulanData;
     }
 
     @Override
@@ -61,7 +65,7 @@ public class TvShowLoader extends AsyncTaskLoader<ArrayList<TvShowItems>> {
     public ArrayList<TvShowItems> loadInBackground() {
 
         final ArrayList<TvShowItems> tvShowItemses = new ArrayList<>();
-        String url = "https://api.themoviedb.org/3/discover/tv?api_key="+ API_KEY +"&language=en-US";
+        String url = "https://api.themoviedb.org/3/search/tv?api_key="+ API_KEY +"&language=en-US&query=" + mKumpulanData;
         ANRequest a = AndroidNetworking.get(url)
                 .setPriority(Priority.MEDIUM)
                 .build();

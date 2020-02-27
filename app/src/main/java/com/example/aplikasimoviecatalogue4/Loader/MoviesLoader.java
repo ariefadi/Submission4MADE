@@ -23,9 +23,12 @@ public class MoviesLoader extends AsyncTaskLoader<ArrayList<MoviesItems>> {
     private ArrayList<MoviesItems> mData;
     private boolean mHasResult = false;
 
-    public MoviesLoader(final Context context){
+    private String mKumpulanData;
+
+    public MoviesLoader(final Context context, String kumpulanData){
         super(context);
         onContentChanged();
+        this.mKumpulanData = kumpulanData;
     }
 
     @Override
@@ -61,7 +64,7 @@ public class MoviesLoader extends AsyncTaskLoader<ArrayList<MoviesItems>> {
     public ArrayList<MoviesItems> loadInBackground() {
 
         final ArrayList<MoviesItems> moviesItemses = new ArrayList<>();
-        String url = "https://api.themoviedb.org/3/discover/movie?api_key="+ API_KEY +"&language=en-US";
+        String url = "https://api.themoviedb.org/3/search/movie?api_key="+ API_KEY +"&language=en-US&query=" + mKumpulanData;
         ANRequest a = AndroidNetworking.get(url)
                 .setPriority(Priority.MEDIUM)
                 .build();
